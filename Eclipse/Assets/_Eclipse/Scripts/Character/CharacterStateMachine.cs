@@ -5,39 +5,57 @@ using UnityEngine.Serialization;
 
 public class CharacterStateMachine : MonoBehaviour
 {
-    public enum BaseStates { Idle, Moving, Dashing, Attacking }
-    public BaseStates currentBaseState = BaseStates.Idle;
-    public delegate void BaseStateChangedDelegate(BaseStates newBaseState);
-    public BaseStateChangedDelegate baseStateChangedDelegate;
+    public enum MovementStates { Idle, Moving, Dashing }
+    public MovementStates currentMovementState = MovementStates.Idle;
+    public delegate void MovementStateChangedDelegate(MovementStates newMovementState);
+    public MovementStateChangedDelegate movementStateChangedDelegate;
     
-    public enum SubStates { Normal, Damaged, Invulnerable }
-    public SubStates currentSubState = SubStates.Normal;
-    public delegate void SubStateChangedDelegate(SubStates newSubState);
-    public SubStateChangedDelegate subStateChangedDelegate;
+    public enum AttackStates { NotAttacking, PrimaryAttacking, SecondaryAttacking }
+    public AttackStates currentAttackState = AttackStates.NotAttacking;
+    public delegate void AttackStateChangedDelegate(AttackStates newAttackState);
+    public AttackStateChangedDelegate attackStateChangedDelegate;
     
-    public BaseStates CurrentBaseState
+    public enum VulnerabilityStates { Normal, Damaged, Invulnerable }
+    public VulnerabilityStates currentVulnerabilityState = VulnerabilityStates.Normal;
+    public delegate void VulnerabilityStateChangedDelegate(VulnerabilityStates newSubState);
+    public VulnerabilityStateChangedDelegate vulnerabilityStateChangedDelegate;
+    
+    public MovementStates CurrentMovementStates
     {
         get
         {
-            return currentBaseState;
+            return currentMovementState;
         }
         set
         { 
-            currentBaseState = value;
-            baseStateChangedDelegate?.Invoke(currentBaseState);
+            currentMovementState = value;
+            movementStateChangedDelegate?.Invoke(currentMovementState);
         } 
     }
     
-    public SubStates CurrentSubState
+    public AttackStates CurrentAttackState
     {
         get
         {
-            return currentSubState;
+            return currentAttackState;
         }
         set
         { 
-            currentSubState = value;
-            subStateChangedDelegate?.Invoke(currentSubState);
+            currentAttackState = value;
+            attackStateChangedDelegate?.Invoke(currentAttackState);
+        } 
+    }
+    
+    public VulnerabilityStates CurrentVulnerabilityState
+    {
+        get
+        {
+            return currentVulnerabilityState;
+        }
+        set
+        { 
+            currentVulnerabilityState = value;
+            vulnerabilityStateChangedDelegate?.Invoke(currentVulnerabilityState);
         } 
     }
 }
