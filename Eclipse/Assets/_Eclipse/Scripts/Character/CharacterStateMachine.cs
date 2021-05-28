@@ -5,6 +5,11 @@ using UnityEngine.Serialization;
 
 public class CharacterStateMachine : MonoBehaviour
 {
+    public enum PhaseStates { Light, Dark }
+    public PhaseStates currentPhaseState = PhaseStates.Light;
+    public delegate void PhaseStateChangedDelegate(PhaseStates newPhaseState);
+    public PhaseStateChangedDelegate phaseStateChangedDelegate;
+    
     public enum MovementStates { Idle, Moving, Dashing }
     public MovementStates currentMovementState = MovementStates.Idle;
     public delegate void MovementStateChangedDelegate(MovementStates newMovementState);
@@ -19,6 +24,19 @@ public class CharacterStateMachine : MonoBehaviour
     public VulnerabilityStates currentVulnerabilityState = VulnerabilityStates.Normal;
     public delegate void VulnerabilityStateChangedDelegate(VulnerabilityStates newSubState);
     public VulnerabilityStateChangedDelegate vulnerabilityStateChangedDelegate;
+    
+    public PhaseStates CurrentPhaseStates
+    {
+        get
+        {
+            return currentPhaseState;
+        }
+        set
+        { 
+            currentPhaseState = value;
+            phaseStateChangedDelegate?.Invoke(currentPhaseState);
+        } 
+    }
     
     public MovementStates CurrentMovementStates
     {

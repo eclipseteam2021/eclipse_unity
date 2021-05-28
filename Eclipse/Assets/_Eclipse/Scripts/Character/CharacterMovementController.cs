@@ -6,7 +6,7 @@ using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
-public class CharacterMovement : MonoBehaviour
+public class CharacterMovementController : MonoBehaviour
 {
     [SerializeField]
     private Animator animator;
