@@ -27,6 +27,12 @@ public class CharacterMasterController : Singleton<CharacterMasterController>
     {
         get { return characterDamageController; }
     }
+    
+    private CharacterAnimationController characterAnimationController;
+    public CharacterAnimationController CharacterAnimationController
+    {
+        get { return characterAnimationController; }
+    }
 
     void Awake()
     {
@@ -34,5 +40,6 @@ public class CharacterMasterController : Singleton<CharacterMasterController>
         characterMovementController = GetComponent<CharacterMovementController>();
         characterAttackController = GetComponent<CharacterAttackController>();
         characterDamageController = GetComponent<CharacterDamageController>();
+        characterAnimationController = GetComponent<CharacterAnimationController>();
     }
 }

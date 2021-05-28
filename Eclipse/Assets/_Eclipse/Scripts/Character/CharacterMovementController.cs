@@ -6,9 +6,8 @@ using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
-public class CharacterMovementController : MonoBehaviour
+public class CharacterMovementController : CharacterSubController
 {
-    [SerializeField]
     private Animator animator;
     
     [SerializeField]
@@ -22,26 +21,31 @@ public class CharacterMovementController : MonoBehaviour
     
     [SerializeField]
     private float rotationSpeed;
-
-    private CharacterStateMachine stateMachine;
-
-    private Quaternion lastDirection = Quaternion.identity;
     
+    private Quaternion lastDirection = Quaternion.identity;
+
+    public Quaternion LastDirection
+    {
+        set => lastDirection = value;
+    }
+
     private Vector3 dashTargetLocation;
 
-    void Start()
+    protected override void Start()
     {
-        stateMachine = CharacterMasterController.Instance.CharacterStateMachine;
+        base.Start();
+
+        animator = masterController.CharacterAnimationController.Animator;
     }
-    
+
     private void Update()
     {
         //Don't move during attack anims
-        if (stateMachine.currentAttackState != CharacterStateMachine.AttackStates.NotAttacking)
+        if (stateMachine.CurrentAttackState != CharacterStateMachine.AttackStates.NotAttacking)
             return;
         
         //Already dashing
-        if (stateMachine.currentMovementState == CharacterStateMachine.MovementStates.Dashing)
+        if (stateMachine.CurrentMovementState == CharacterStateMachine.MovementStates.Dashing)
         {
             RunDash();
         }
@@ -70,12 +74,12 @@ public class CharacterMovementController : MonoBehaviour
         {
             transform.position = Vector3.Lerp(transform.position, transform.position + movementVector.normalized, movementSpeed * Time.deltaTime);
             
-            stateMachine.currentMovementState = CharacterStateMachine.MovementStates.Moving;
+            stateMachine.CurrentMovementState = CharacterStateMachine.MovementStates.Moving;
             lastDirection = Quaternion.LookRotation(movementVector);
         }
         else
         {
-            stateMachine.currentMovementState = CharacterStateMachine.MovementStates.Idle;
+            stateMachine.CurrentMovementState = CharacterStateMachine.MovementStates.Idle;
         }
 
         transform.rotation = Quaternion.Lerp( transform.rotation, lastDirection, rotationSpeed * Time.deltaTime );
@@ -88,7 +92,7 @@ public class CharacterMovementController : MonoBehaviour
         //Dash Complete Check
         if (Vector3.Distance(transform.position, dashTargetLocation) < 0.1f)
         {
-            stateMachine.currentMovementState = CharacterStateMachine.MovementStates.Idle;
+            stateMachine.CurrentMovementState = CharacterStateMachine.MovementStates.Idle;
         }
     }
 
@@ -99,6 +103,6 @@ public class CharacterMovementController : MonoBehaviour
         
         dashTargetLocation = transform.position + (movementDirection.normalized * dashDistance);
         
-        stateMachine.currentMovementState = CharacterStateMachine.MovementStates.Dashing;
+        stateMachine.CurrentMovementState = CharacterStateMachine.MovementStates.Dashing;
     }
 }

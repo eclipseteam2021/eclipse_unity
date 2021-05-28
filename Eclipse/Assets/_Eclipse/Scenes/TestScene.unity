@@ -326,6 +326,8 @@ GameObject:
   - component: {fileID: 890807017}
   - component: {fileID: 890807013}
   - component: {fileID: 890807015}
+  - component: {fileID: 890807018}
+  - component: {fileID: 890807019}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -360,7 +362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cec2bcb48aff0f46814f99bf98b8a59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 2032814918}
   movementSpeed: 10
   dashSpeed: 20
   dashDistance: 10
@@ -391,6 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7153c4c32c87588498816356a546a069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startWeaponPrefab: {fileID: 4755898860419096715, guid: 82a81717ec898ed43b82de085b4e2993, type: 3}
 --- !u!114 &890807016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,10 +417,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e7f9aeae3242f43b66c2ac62d197ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPhaseState: 0
-  currentMovementState: 0
-  currentAttackState: 0
-  currentVulnerabilityState: 0
+--- !u!114 &890807018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890807011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 515081a0dcd5a5c41848f2e7cc22b7fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 2032814918}
+--- !u!114 &890807019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890807011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4278886b2ce0af44eb45f99918e685b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,26 +6,26 @@ using UnityEngine.Serialization;
 public class CharacterStateMachine : MonoBehaviour
 {
     public enum PhaseStates { Light, Dark }
-    public PhaseStates currentPhaseState = PhaseStates.Light;
+    private PhaseStates currentPhaseState = PhaseStates.Light;
     public delegate void PhaseStateChangedDelegate(PhaseStates newPhaseState);
     public PhaseStateChangedDelegate phaseStateChangedDelegate;
     
     public enum MovementStates { Idle, Moving, Dashing }
-    public MovementStates currentMovementState = MovementStates.Idle;
+    private MovementStates currentMovementState = MovementStates.Idle;
     public delegate void MovementStateChangedDelegate(MovementStates newMovementState);
     public MovementStateChangedDelegate movementStateChangedDelegate;
     
     public enum AttackStates { NotAttacking, PrimaryAttacking, SecondaryAttacking }
-    public AttackStates currentAttackState = AttackStates.NotAttacking;
+    private AttackStates currentAttackState = AttackStates.NotAttacking;
     public delegate void AttackStateChangedDelegate(AttackStates newAttackState);
     public AttackStateChangedDelegate attackStateChangedDelegate;
     
     public enum VulnerabilityStates { Normal, Damaged, Invulnerable }
-    public VulnerabilityStates currentVulnerabilityState = VulnerabilityStates.Normal;
+    private VulnerabilityStates currentVulnerabilityState = VulnerabilityStates.Normal;
     public delegate void VulnerabilityStateChangedDelegate(VulnerabilityStates newSubState);
     public VulnerabilityStateChangedDelegate vulnerabilityStateChangedDelegate;
     
-    public PhaseStates CurrentPhaseStates
+    public PhaseStates CurrentPhaseState
     {
         get
         {
@@ -38,7 +38,7 @@ public class CharacterStateMachine : MonoBehaviour
         } 
     }
     
-    public MovementStates CurrentMovementStates
+    public MovementStates CurrentMovementState
     {
         get
         {
