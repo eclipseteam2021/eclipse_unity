@@ -6,7 +6,7 @@ public class Singleton<T> : MonoBehaviour
     private static bool _applicationIsQuitting = false;
     
     private static T _instance = null;
-    public static T instance
+    public static T Instance
     {
         get
         {
@@ -16,8 +16,6 @@ public class Singleton<T> : MonoBehaviour
 
                 if (_instance == null)
                     _instance = new GameObject("_" + typeof(T).Name).AddComponent<T>();
-
-                DontDestroyOnLoad(_instance);
             }
 
             return _instance;
@@ -29,7 +27,6 @@ public class Singleton<T> : MonoBehaviour
         if (_instance == null)
         {
             _instance = this as T;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {

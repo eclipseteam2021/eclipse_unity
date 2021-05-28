@@ -9,6 +9,7 @@
 [Ee]clipse/[Bb]uilds/
 [Ee]clipse/[Ll]ogs/
 [Ee]clipse/[Mm]emoryCaptures/
+[Ee]clipse/.idea/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta

@@ -323,6 +323,7 @@ GameObject:
   - component: {fileID: 890807012}
   - component: {fileID: 890807014}
   - component: {fileID: 890807016}
+  - component: {fileID: 890807017}
   - component: {fileID: 890807013}
   - component: {fileID: 890807015}
   m_Layer: 0
@@ -361,6 +362,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2032814918}
   movementSpeed: 10
+  dashSpeed: 20
+  dashDistance: 10
   rotationSpeed: 10
 --- !u!136 &890807014
 CapsuleCollider:
@@ -400,6 +403,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57dbc48e122f7324ea454ba41c2746a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &890807017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890807011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e7f9aeae3242f43b66c2ac62d197ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPhaseState: 0
+  currentMovementState: 0
+  currentAttackState: 0
+  currentVulnerabilityState: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,7 +28,7 @@ public class CharacterMasterController : Singleton<CharacterMasterController>
         get { return characterDamageController; }
     }
 
-    void Start()
+    void Awake()
     {
         characterStateMachine = GetComponent<CharacterStateMachine>();
         characterMovementController = GetComponent<CharacterMovementController>();
