@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 230f9f424bba4c342b82e76d8c201cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryAnimTrigger: 
-  secondaryAnimTrigger: 
-  primaryAttackDistance: 10
+  primaryAnimTrigger: PrimaryAttack
+  secondaryAnimTrigger: SecondaryAttack
+  primaryAttackDistance: 5
+  primaryAttackSlideTime: 0.6
